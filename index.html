@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adi's Portfolio</title>
   <style>
-    /* Reset & Global */
     * {margin: 0; padding: 0; box-sizing: border-box;}
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -33,31 +32,75 @@
     }
     nav a:hover {color: #3498db;}
 
-    /* Hero Section */
+    /* HERO */
     header {
-      background: linear-gradient(135deg, #2c3e50, #3498db);
-      color: #fff;
+      position: relative;
       height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 2rem;
-      animation: fadeIn 2s ease-in-out;
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      color: #fff;
+      overflow: hidden;
     }
-    header h1 {font-size: 3rem; margin-bottom: 1rem;}
-    header p {font-size: 1.2rem; margin-bottom: 2rem;}
-    header a {
+    .hero-container {z-index: 2;}
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      margin-bottom: 1rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+    h1 {font-size: 3rem; margin-bottom: 0.5rem;}
+    .highlight {color: #ffdd57;}
+    #typing {
+      font-size: 1.3rem;
+      font-weight: bold;
+      display: inline-block;
+      white-space: nowrap;
+      border-right: 3px solid #fff;
+      animation: blink 0.7s infinite;
+    }
+    @keyframes blink {50% {border-color: transparent;}}
+
+    /* Social Icons */
+    .social-icons {margin: 1.5rem 0;}
+    .social-icons a {
+      font-size: 1.8rem;
+      margin: 0 10px;
+      transition: transform 0.3s;
+    }
+    .social-icons a:hover {transform: scale(1.2);}
+
+    /* CTA */
+    .cta-btn {
       background: #fff;
       color: #3498db;
       padding: 0.9rem 1.8rem;
       border-radius: 30px;
       font-weight: bold;
-      transition: all 0.3s ease;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
     }
-    header a:hover {background: #3498db; color: #fff; transform: scale(1.05);}
+    .cta-btn:hover {
+      background: #3498db;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    /* Background Blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.6;
+      animation: move 20s infinite alternate;
+    }
+    .blob1 {width: 400px; height: 400px; background: #ff4d6d; top: -100px; left: -100px;}
+    .blob2 {width: 500px; height: 500px; background: #2ecc71; bottom: -150px; right: -150px;}
+    @keyframes move {from {transform: translateY(0);} to {transform: translateY(50px);}}
 
     /* Sections */
     section {padding: 4rem 10%; text-align: center;}
@@ -79,7 +122,7 @@
     }
     p {max-width: 800px; margin: auto; font-size: 1.1rem;}
 
-    /* Cards */
+    /* Grid Cards */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -100,6 +143,21 @@
     }
     .card h3 {margin-bottom: 1rem; color: #3498db;}
 
+    /* Skills Progress */
+    .skill-bar {margin: 1rem 0;}
+    .skill-name {font-weight: bold;}
+    .progress {
+      height: 12px;
+      background: #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-top: 5px;
+    }
+    .progress div {
+      height: 100%;
+      background: linear-gradient(to right, #3498db, #2ecc71);
+    }
+
     /* Contact */
     .contact p {margin: 10px 0; font-size: 1.1rem;}
     .contact a {color: #3498db; font-weight: bold;}
@@ -111,12 +169,6 @@
       text-align: center;
       padding: 1rem;
       margin-top: 3rem;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
     }
   </style>
 </head>
@@ -135,9 +187,22 @@
 
   <!-- Hero -->
   <header>
-    <h1>Hi, I'm Adi 🚀</h1>
-    <p>Computer Science Student | Full Stack Developer | Problem Solver</p>
-    <a href="#projects">View My Work</a>
+    <div class="hero-container">
+      <img src="your-photo.jpg" alt="Adi Profile" class="profile-pic">
+      <h1>Hi, I'm <span class="highlight">Adi 🚀</span></h1>
+      <p><span id="typing"></span></p>
+
+      <div class="social-icons">
+        <a href="https://github.com/adi-100" target="_blank">🐙</a>
+        <a href="https://linkedin.com/in/tejuadi" target="_blank">💼</a>
+        <a href="mailto:tejuadi11@gmail.com">📧</a>
+      </div>
+
+      <a href="#projects" class="cta-btn">View My Work</a>
+    </div>
+
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
   </header>
 
   <!-- About -->
@@ -152,10 +217,22 @@
   <section id="skills">
     <h2>Technical Skills</h2>
     <div class="grid">
-      <div class="card">SQL</div>
-      <div class="card">Java</div>
-      <div class="card">Hibernate</div>
-      <div class="card">Spring Boot</div>
+      <div class="card">
+        <p class="skill-name">Java</p>
+        <div class="progress"><div style="width: 85%"></div></div>
+      </div>
+      <div class="card">
+        <p class="skill-name">Spring Boot</p>
+        <div class="progress"><div style="width: 80%"></div></div>
+      </div>
+      <div class="card">
+        <p class="skill-name">Hibernate</p>
+        <div class="progress"><div style="width: 75%"></div></div>
+      </div>
+      <div class="card">
+        <p class="skill-name">SQL/MySQL</p>
+        <div class="progress"><div style="width: 70%"></div></div>
+      </div>
     </div>
   </section>
 
@@ -164,14 +241,13 @@
     <h2>Projects</h2>
     <div class="grid">
       <div class="card">
-        <h3>Kisan Buddy (Sep 2024 – Jan 2025)</h3>
-        <p>Developed a farmer-centric application to eliminate brokerage and connect directly with mandis. 
-        Implemented location-based discovery and intuitive UI for seamless navigation.</p>
+        <h3>🌾 Kisan Buddy (2024–25)</h3>
+        <p>Farmer-centric app to eliminate brokerage and connect directly with mandis. Location-based mandi discovery & intuitive UI.</p>
         <p><b>Tech:</b> Java, Firebase</p>
       </div>
       <div class="card">
-        <h3>Dubbing of Videos (Jan 2025 – Present)</h3>
-        <p>Developed a solution to automate dubbing of English videos into multiple Indian languages using AI-powered speech recognition & TTS.</p>
+        <h3>🎙 Dubbing of Videos (2025–Present)</h3>
+        <p>AI-powered system for dubbing English videos into Indian languages using Speech Recognition & TTS.</p>
         <p><b>Tech:</b> HTML, Python</p>
       </div>
     </div>
@@ -182,8 +258,8 @@
     <h2>Education</h2>
     <div class="grid">
       <div class="card"><h3>Presidency University</h3><p>B.Tech CSE (2021–2025)<br>CGPA: 6.60</p></div>
-      <div class="card"><h3>Sree Vijaya PU College</h3><p>Class XII (2020–2021)<br>Percentage: 67.67%</p></div>
-      <div class="card"><h3>Jain Public School</h3><p>Class X (2015–2019)<br>Percentage: 71.8%</p></div>
+      <div class="card"><h3>Sree Vijaya PU College</h3><p>Class XII (2020–2021)<br>67.67%</p></div>
+      <div class="card"><h3>Jain Public School</h3><p>Class X (2015–2019)<br>71.8%</p></div>
     </div>
   </section>
 
@@ -191,8 +267,8 @@
   <section id="certifications">
     <h2>Certifications</h2>
     <div class="grid">
-      <div class="card">Certified in "OOPs in Java" – Simplilearn</div>
-      <div class="card">Certified in "Introduction to Java and OOP" – Saylor Academy</div>
+      <div class="card">OOPs in Java – Simplilearn</div>
+      <div class="card">Intro to Java & OOP – Saylor Academy</div>
     </div>
   </section>
 
@@ -201,7 +277,7 @@
     <h2>Internship</h2>
     <div class="card">
       <h3>Dhee Coding Lab</h3>
-      <p>Hands-on internship in Java Full Stack Development.</p>
+      <p>Hands-on internship in Java Full Stack Development:</p>
       <ul>
         <li>Built full-stack apps using Java, HTML, CSS</li>
         <li>Implemented JDBC with SQL databases</li>
@@ -213,15 +289,38 @@
   <!-- Contact -->
   <section id="contact" class="contact">
     <h2>Contact</h2>
-    <p>📧 Email: <a href="mailto:tejuadi11@gmail.com">tejuadi11@gmail.com</a></p>
-    <p>📱 Phone: +91 7019587765</p>
-    <p>🔗 LinkedIn: <a href="https://linkedin.com/in/tejuadi" target="_blank">linkedin.com/in/tejuadi</a></p>
+    <p>📧 <a href="mailto:tejuadi11@gmail.com">tejuadi11@gmail.com</a></p>
+    <p>📱 +91 7019587765</p>
+    <p>🔗 <a href="https://linkedin.com/in/tejuadi" target="_blank">linkedin.com/in/tejuadi</a></p>
   </section>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 Adi Nareyana Tejaswi S. All Rights Reserved.</p>
   </footer>
+
+  <!-- Typing Animation -->
+  <script>
+    const roles = ["Computer Science Student", "Full Stack Developer", "Problem Solver", "Tech Enthusiast"];
+    let i = 0, j = 0, current = "", deleting = false;
+
+    function type() {
+      if (i < roles.length) {
+        if (!deleting && j <= roles[i].length) {
+          current = roles[i].substring(0, j++);
+          document.getElementById("typing").innerText = current;
+        } else if (deleting && j >= 0) {
+          current = roles[i].substring(0, j--);
+          document.getElementById("typing").innerText = current;
+        }
+
+        if (j === roles[i].length + 1) {deleting = true; setTimeout(type, 1500);}
+        else if (j < 0) {deleting = false; i = (i+1)%roles.length;}
+        setTimeout(type, deleting ? 60 : 120);
+      }
+    }
+    type();
+  </script>
 
 </body>
 </html>
