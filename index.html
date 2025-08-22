@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adi's Portfolio</title>
   <style>
+    /* Reset & Global */
     * {margin: 0; padding: 0; box-sizing: border-box;}
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,6 +15,23 @@
       scroll-behavior: smooth;
     }
     a {text-decoration: none; color: inherit;}
+
+    /* Navbar */
+    nav {
+      background: #2c3e50;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 20px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {color: #3498db;}
 
     /* Hero Section */
     header {
@@ -28,8 +46,8 @@
       padding: 2rem;
       animation: fadeIn 2s ease-in-out;
     }
-    header h1 {font-size: 3.5rem; animation: slideDown 1.5s;}
-    header p {font-size: 1.3rem; margin: 1rem 0;}
+    header h1 {font-size: 3rem; margin-bottom: 1rem;}
+    header p {font-size: 1.2rem; margin-bottom: 2rem;}
     header a {
       background: #fff;
       color: #3498db;
@@ -41,29 +59,12 @@
     }
     header a:hover {background: #3498db; color: #fff; transform: scale(1.05);}
 
-    /* Navbar */
-    nav {
-      background: #2c3e50;
-      padding: 1rem;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 20px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {color: #3498db;}
-
-    /* Section General */
+    /* Sections */
     section {padding: 4rem 10%; text-align: center;}
     h2 {
-      margin-bottom: 1rem;
-      color: #2c3e50;
+      margin-bottom: 1.5rem;
       font-size: 2.2rem;
+      color: #2c3e50;
       position: relative;
       display: inline-block;
     }
@@ -76,11 +77,12 @@
       margin: 0.5rem auto;
       border-radius: 5px;
     }
+    p {max-width: 800px; margin: auto; font-size: 1.1rem;}
 
-    /* Skills & Projects Cards */
-    .skills, .projects {
+    /* Cards */
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
       margin-top: 2rem;
     }
@@ -90,6 +92,7 @@
       border-radius: 15px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       transition: transform 0.3s, box-shadow 0.3s;
+      text-align: left;
     }
     .card:hover {
       transform: translateY(-8px);
@@ -99,6 +102,7 @@
 
     /* Contact */
     .contact p {margin: 10px 0; font-size: 1.1rem;}
+    .contact a {color: #3498db; font-weight: bold;}
 
     /* Footer */
     footer {
@@ -106,6 +110,7 @@
       color: #fff;
       text-align: center;
       padding: 1rem;
+      margin-top: 3rem;
     }
 
     /* Animations */
@@ -113,76 +118,109 @@
       from {opacity: 0;}
       to {opacity: 1;}
     }
-    @keyframes slideDown {
-      from {transform: translateY(-30px); opacity: 0;}
-      to {transform: translateY(0); opacity: 1;}
-    }
   </style>
 </head>
 <body>
-
-  <!-- Hero -->
-  <header>
-    <h1>Hi, I'm Adi 🚀</h1>
-    <p>Web Developer | Designer | Programmer</p>
-    <a href="#projects">View My Work</a>
-  </header>
 
   <!-- Navbar -->
   <nav>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#internship">Internship</a>
     <a href="#contact">Contact</a>
   </nav>
+
+  <!-- Hero -->
+  <header>
+    <h1>Hi, I'm Adi 🚀</h1>
+    <p>Computer Science Student | Full Stack Developer | Problem Solver</p>
+    <a href="#projects">View My Work</a>
+  </header>
 
   <!-- About -->
   <section id="about">
     <h2>About Me</h2>
-    <p>I’m a passionate developer who loves building modern web applications, creating clean designs, and solving real-world problems with code.</p>
+    <p>I’m a Computer Science student with strong skills in software development. 
+    Proven ability to work effectively in team projects and independently manage coding tasks. 
+    Eager to transition academic knowledge into real-world software engineering roles.</p>
   </section>
 
   <!-- Skills -->
   <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills">
-      <div class="card">HTML / CSS / JavaScript</div>
-      <div class="card">React / Node.js</div>
-      <div class="card">Java / Spring Boot</div>
-      <div class="card">SQL / MySQL</div>
+    <h2>Technical Skills</h2>
+    <div class="grid">
+      <div class="card">SQL</div>
+      <div class="card">Java</div>
+      <div class="card">Hibernate</div>
+      <div class="card">Spring Boot</div>
     </div>
   </section>
 
   <!-- Projects -->
   <section id="projects">
     <h2>Projects</h2>
-    <div class="projects">
+    <div class="grid">
       <div class="card">
-        <h3>🌐 Portfolio Website</h3>
-        <p>A responsive portfolio site built using HTML, CSS, and JavaScript.</p>
+        <h3>Kisan Buddy (Sep 2024 – Jan 2025)</h3>
+        <p>Developed a farmer-centric application to eliminate brokerage and connect directly with mandis. 
+        Implemented location-based discovery and intuitive UI for seamless navigation.</p>
+        <p><b>Tech:</b> Java, Firebase</p>
       </div>
       <div class="card">
-        <h3>👨‍💼 Employee Management System</h3>
-        <p>CRUD application with Spring Boot & MySQL backend.</p>
+        <h3>Dubbing of Videos (Jan 2025 – Present)</h3>
+        <p>Developed a solution to automate dubbing of English videos into multiple Indian languages using AI-powered speech recognition & TTS.</p>
+        <p><b>Tech:</b> HTML, Python</p>
       </div>
-      <div class="card">
-        <h3>🛒 E-commerce App</h3>
-        <p>React + Node.js application with payment gateway integration.</p>
-      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="grid">
+      <div class="card"><h3>Presidency University</h3><p>B.Tech CSE (2021–2025)<br>CGPA: 6.60</p></div>
+      <div class="card"><h3>Sree Vijaya PU College</h3><p>Class XII (2020–2021)<br>Percentage: 67.67%</p></div>
+      <div class="card"><h3>Jain Public School</h3><p>Class X (2015–2019)<br>Percentage: 71.8%</p></div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <div class="grid">
+      <div class="card">Certified in "OOPs in Java" – Simplilearn</div>
+      <div class="card">Certified in "Introduction to Java and OOP" – Saylor Academy</div>
+    </div>
+  </section>
+
+  <!-- Internship -->
+  <section id="internship">
+    <h2>Internship</h2>
+    <div class="card">
+      <h3>Dhee Coding Lab</h3>
+      <p>Hands-on internship in Java Full Stack Development.</p>
+      <ul>
+        <li>Built full-stack apps using Java, HTML, CSS</li>
+        <li>Implemented JDBC with SQL databases</li>
+        <li>Worked on real-time development practices</li>
+      </ul>
     </div>
   </section>
 
   <!-- Contact -->
   <section id="contact" class="contact">
     <h2>Contact</h2>
-    <p>📧 Email: <a href="mailto:adibolt007@example.com">adibolt007@example.com</a></p>
+    <p>📧 Email: <a href="mailto:tejuadi11@gmail.com">tejuadi11@gmail.com</a></p>
     <p>📱 Phone: +91 7019587765</p>
     <p>🔗 LinkedIn: <a href="https://linkedin.com/in/tejuadi" target="_blank">linkedin.com/in/tejuadi</a></p>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Adi. All Rights Reserved.</p>
+    <p>&copy; 2025 Adi Nareyana Tejaswi S. All Rights Reserved.</p>
   </footer>
 
 </body>
