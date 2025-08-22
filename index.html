@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
+  <title>Adi's Portfolio</title>
   <style>
     * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {font-family: 'Arial', sans-serif; background: #f9f9f9; color: #333; line-height: 1.6;}
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
     a {text-decoration: none; color: inherit;}
-    
-    /* Header / Hero */
+
+    /* Hero Section */
     header {
-      background: linear-gradient(to right, #2c3e50, #3498db);
+      background: linear-gradient(135deg, #2c3e50, #3498db);
       color: #fff;
       height: 100vh;
       display: flex;
@@ -19,20 +25,23 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      padding: 2rem;
+      animation: fadeIn 2s ease-in-out;
     }
-    header h1 {font-size: 3rem;}
-    header p {font-size: 1.2rem; margin: 1rem 0;}
+    header h1 {font-size: 3.5rem; animation: slideDown 1.5s;}
+    header p {font-size: 1.3rem; margin: 1rem 0;}
     header a {
       background: #fff;
       color: #3498db;
-      padding: 0.8rem 1.5rem;
-      border-radius: 25px;
+      padding: 0.9rem 1.8rem;
+      border-radius: 30px;
       font-weight: bold;
-      transition: 0.3s;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-    header a:hover {background: #eee;}
-    
-    /* Navigation */
+    header a:hover {background: #3498db; color: #fff; transform: scale(1.05);}
+
+    /* Navbar */
     nav {
       background: #2c3e50;
       padding: 1rem;
@@ -41,25 +50,56 @@
       top: 0;
       z-index: 1000;
     }
-    nav a {color: #fff; margin: 0 15px; font-weight: bold;}
+    nav a {
+      color: #fff;
+      margin: 0 20px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
     nav a:hover {color: #3498db;}
-    
-    /* Sections */
+
+    /* Section General */
     section {padding: 4rem 10%; text-align: center;}
-    h2 {margin-bottom: 1rem; color: #2c3e50;}
-    .skills, .projects {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;}
+    h2 {
+      margin-bottom: 1rem;
+      color: #2c3e50;
+      font-size: 2.2rem;
+      position: relative;
+      display: inline-block;
+    }
+    h2::after {
+      content: "";
+      width: 60%;
+      height: 4px;
+      background: linear-gradient(to right, #3498db, #2ecc71);
+      display: block;
+      margin: 0.5rem auto;
+      border-radius: 5px;
+    }
+
+    /* Skills & Projects Cards */
+    .skills, .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
     .card {
       background: #fff;
       padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: 0.3s;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .card:hover {transform: translateY(-5px);}
-    
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    .card h3 {margin-bottom: 1rem; color: #3498db;}
+
     /* Contact */
-    .contact p {margin: 10px 0;}
-    
+    .contact p {margin: 10px 0; font-size: 1.1rem;}
+
     /* Footer */
     footer {
       background: #2c3e50;
@@ -67,18 +107,28 @@
       text-align: center;
       padding: 1rem;
     }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    @keyframes slideDown {
+      from {transform: translateY(-30px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
   </style>
 </head>
 <body>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <header>
-    <h1>Hi, I'm ADI</h1>
+    <h1>Hi, I'm Adi 🚀</h1>
     <p>Web Developer | Designer | Programmer</p>
     <a href="#projects">View My Work</a>
   </header>
 
-  <!-- Navigation -->
+  <!-- Navbar -->
   <nav>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
@@ -86,13 +136,13 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <!-- About Section -->
+  <!-- About -->
   <section id="about">
     <h2>About Me</h2>
     <p>I’m a passionate developer who loves building modern web applications, creating clean designs, and solving real-world problems with code.</p>
   </section>
 
-  <!-- Skills Section -->
+  <!-- Skills -->
   <section id="skills">
     <h2>Skills</h2>
     <div class="skills">
@@ -103,38 +153,37 @@
     </div>
   </section>
 
-  <!-- Projects Section -->
+  <!-- Projects -->
   <section id="projects">
     <h2>Projects</h2>
     <div class="projects">
       <div class="card">
-        <h3>Portfolio Website</h3>
+        <h3>🌐 Portfolio Website</h3>
         <p>A responsive portfolio site built using HTML, CSS, and JavaScript.</p>
       </div>
       <div class="card">
-        <h3>Employee Management System</h3>
+        <h3>👨‍💼 Employee Management System</h3>
         <p>CRUD application with Spring Boot & MySQL backend.</p>
       </div>
       <div class="card">
-        <h3>E-commerce App</h3>
+        <h3>🛒 E-commerce App</h3>
         <p>React + Node.js application with payment gateway integration.</p>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact -->
   <section id="contact" class="contact">
     <h2>Contact</h2>
-    <p>Email: yourname@example.com</p>
-    <p>Phone: +91 9876543210</p>
-    <p>LinkedIn: linkedin.com/in/yourname</p>
+    <p>📧 Email: <a href="mailto:adibolt007@example.com">adibolt007@example.com</a></p>
+    <p>📱 Phone: +91 7019587765</p>
+    <p>🔗 LinkedIn: <a href="https://linkedin.com/in/tejuadi" target="_blank">linkedin.com/in/tejuadi</a></p>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+    <p>&copy; 2025 Adi. All Rights Reserved.</p>
   </footer>
 
 </body>
 </html>
-
